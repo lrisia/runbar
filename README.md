@@ -207,3 +207,7 @@ cron, and launchd definitions. `Sources/runbar` is the app.
 
 The app icon is drawn by `scripts/icon.swift`. After changing it, run
 `swift scripts/icon.swift` to rewrite `Resources/AppIcon.icns`.
+
+## License
+
+MIT. See [LICENSE](LICENSE).

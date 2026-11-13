@@ -36,6 +36,9 @@ Tick **Open Runbar at login** in the panel.
 
 Run the tests with `swift test`.
 
+The app icon is drawn by `scripts/icon.swift`. After changing it, run
+`swift scripts/icon.swift` to rewrite `Resources/AppIcon.icns`.
+
 ## Config
 
 `~/.config/runbar/config.toml`, created with examples on first launch.

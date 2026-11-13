@@ -12,6 +12,8 @@ rm -rf "$app"
 mkdir -p "$app/Contents/MacOS"
 cp "$bin" "$app/Contents/MacOS/runbar"
 cp Resources/Info.plist "$app/Contents/Info.plist"
+mkdir -p "$app/Contents/Resources"
+cp Resources/AppIcon.icns "$app/Contents/Resources/AppIcon.icns"
 # Ad-hoc signature: enough for notifications and Launch at Login on this Mac.
 codesign --force --sign - --identifier local.runbar "$app"
 echo "Built $app"

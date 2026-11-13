@@ -27,12 +27,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate, PanelActions {
     private var unseenFailure = false
     /// Ticks once a second while the panel is open, for running times.
     private var liveTimer: Timer?
-    /// Services that ran under cmdbar's labels, started again on the first config load.
-    private var startAfterMigration: [String] = []
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        // Before anything creates Runbar's folders, or the old ones won't move.
-        startAfterMigration = Migration.fromCmdbar(paths: paths)
         notifier.setUp()
         let shell = Shell.loginShell()
         services = Services(paths: paths, shell: shell, notifier: notifier)
@@ -93,8 +89,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate, PanelActions {
             configError = nil
             services.apply(newConfig.allItems)
             scheduler.apply(newConfig.allItems)
-            for id in startAfterMigration where services.items[id] != nil { services.start(id) }
-            startAfterMigration = []
         case .failure(let error):
             // Keep running with the last good config.
             if configError != error {
